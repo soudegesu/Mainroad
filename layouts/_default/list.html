@@ -13,6 +13,7 @@
 	{{- range .Paginator.Pages }}
 		{{- .Render "summary" }}
 	{{- end }}
+	{{ partial "pagination.html" . }}
+	{{ partial "ad/pagination.html" . }}
 </main>
-{{ partial "pagination.html" . }}
 {{ end }}

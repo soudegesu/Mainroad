@@ -15,9 +15,10 @@
 			<img src="{{ .Params.thumbnail | relURL }}" alt="{{ .Title }}">
 		</figure>
 		{{- end }}
+		{{- partial "ad/top.html" . -}}
 		{{- partial "post_toc.html" . -}}
 		<div class="content post__content clearfix">
-			{{ .Content }}
+			{{ replace .Content "<!--adsense-->" (partial "ad/inarticle.html" .) | safeHTML }}
 		</div>
 		{{- if .Params.tags }}
 		<footer class="post__footer">
@@ -25,7 +26,9 @@
 		</footer>
 		{{- end }}
 	</article>
+	{{ partial "ad/bottom.html" . }}
 </main>
+{{ partial "related.html" . }}
 {{ partial "authorbox.html" . }}
 {{ partial "post_nav.html" . }}
 {{ partial "comments.html" . }}

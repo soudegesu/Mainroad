@@ -12,7 +12,7 @@
 	<link rel="dns-prefetch" href="//googleads4.g.doubleclick.net">
 	<link rel="dns-prefetch" href="//tpc.googlesyndication.com">
 	<link rel="dns-prefetch" href="//www.gstatic.com">		
-	{{ .Hugo.Generator }}
+	{{ hugo.Generator }}
 	{{ partial "seo.html" . }}
 	{{ if .Site.Params.opengraph }}{{ template "_internal/opengraph.html" . }}{{ end }}
 	{{ if .Site.Params.twitter_cards }}{{ template "_internal/twitter_cards.html" . }}{{ end }}

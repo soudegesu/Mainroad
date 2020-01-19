@@ -1,11 +1,11 @@
 <!-- begin SEO -->
 {{ $title := (print .Title " - " .Site.Title) }}
-{{ $url := (print .Site.BaseURL .Page.URL) }}
+{{ $url := (print .Site.BaseURL .Page.RelPermalink) }}
 <title>{{ if .IsHome }}{{ .Title }}{{ else }}{{ $title }}{{ end }}</title>
 <meta name="description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.Description }}{{ end }}">
 <meta property="og:description" content="{{ if .IsHome }}{{ .Site.Params.description }}{{ else }}{{ .Params.Description }}{{ end }}">
 <meta name="author" content="{{ $.Site.Author.name }}">
-<link rel="canonical" href="{{ .Site.BaseURL }}{{ .Page.URL }}">
+<link rel="canonical" href="{{ .Site.BaseURL }}{{ .Page.RelPermalink }}">
 {{ if .IsTranslated }}
   <link rel="alternate" hreflang="{{ .Lang }}" href="{{ .Permalink }}"/>      
   {{ range .Translations }}
@@ -15,7 +15,7 @@
   <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}"/>
   {{ end }}
   {{ if eq .Lang "ja" }}
-  <link rel="alternate" hreflang="x-default" href="{{ .Site.BaseURL }}/en{{ .Page.URL }}"/>
+  <link rel="alternate" hreflang="x-default" href="{{ .Site.BaseURL }}/en{{ .Page.RelPermalink }}"/>
   {{ end }}
 {{ else }}
   <link rel="alternate" hreflang="x-default" href="{{ .Permalink }}" />
